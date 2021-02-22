@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
-  root "sessions#home"
+  root "welcome#home"
   get '/signup' => 'users#new'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
   #custom routes above generator provided routes
   
   resources :playdates
