@@ -15,13 +15,15 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find_by(id: params[:id])
+        redirect_to '/' if !@user
     end
 
     
     private
     
     def user_params
-        params.require(:user).permit(:username, :email, :passowrd)
+        params.require(:user).permit(:username, :email, :password)
     end
 
 end
