@@ -5,12 +5,18 @@ class SessionsController < ApplicationController
     
     def create
         if session[:user_id]
-            redirect_to 'welcome/home'
+            redirect_to '/'
         elsif params[:username].nil? || params[:username].empty?
             redirect_to '/login'
         else
-           session[:user_id] = User.find_by(username: params[:username]).id
-           redirect_to '/'
+            user = User.find_by(username: params[:username])
+            if user && user.authenticate(params[:password])
+                session[:user_id] = user.id
+                redirect_to "/users/#{user.id}"
+            else
+                flash[:message] = "Please enter correct username and password."
+                redirect_to '/login'
+            end
         end
     end
 
