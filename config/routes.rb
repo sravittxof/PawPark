@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   #custom routes above generator provided routes
   
-  resources :playdates
-  resources :visits
+
+  resources :visits do 
+    resources :playdates
+  end
   resources :parks, only: [:index, :show, :edit, :update]
   resources :dogs, only: [:index, :show]
   resources :users do
