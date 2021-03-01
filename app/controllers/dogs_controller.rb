@@ -13,10 +13,6 @@ class DogsController < ApplicationController
     end
 
 
-    private
 
-    def dogs_params
-        params.require()
-    end
 
 end
