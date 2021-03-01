@@ -3,8 +3,7 @@
 <ul>
     <% @parks.each do |park| %>
         <li> <%= park.name %> </li>
-        <li> <%= park.location %> </li>
-        <li> <%= park.current_visitors.to_s %> </li>
+        <li> <%= "Current Visitors: " + park.current_visitors.to_s %> </li>
         <li> <%= link_to "See park details", park_path(park) %> </li>
         <br>
 

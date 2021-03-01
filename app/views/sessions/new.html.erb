@@ -2,6 +2,11 @@
 
 <%= flash[:message] if flash[:message]%>
 
+<%= button_to "Login With Google", "/auth/google_oauth2"%>
+<br>
+<br>
+
+<h3>Or create a Username and Password Below</h3>
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
   <input name=username>
   <br>
