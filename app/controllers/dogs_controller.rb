@@ -1,7 +1,11 @@
 class DogsController < ApplicationController
 
     def index
-        @dogs = Dog.all
+        if params [:user_id] && @user = User.find_by_id(params[:user_id])
+            @dogs = @user.dogs.all
+        else
+            @dogs = Dog.all
+        end
     end
 
     def show
