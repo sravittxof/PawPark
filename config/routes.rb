@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :visits do 
     resources :playdates
   end
-  resources :parks, only: [:index, :show, :edit, :update]
+  #resources :parks, only: [:index, :show, :edit, :update]
   resources :parks do
     resources :visits, only: [:new, :create]
   end

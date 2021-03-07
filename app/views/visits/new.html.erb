@@ -1,8 +1,11 @@
 <h1>Check-In to Park</h1>
 
 <%= form_for(@visit) do |f| %>
+    <%= %>
     <%= f.label :active_visit, "Select Button to Check-In to Park" %>
-    <%= f.checkbox :active_visit %>
+    <%= f.check_box :active_visit %>
+    <%= f.collection_select :dog_id, current_user.dogs.all, :id, :name %>
+    <%= f.hidden_field :park_id, value: @visit.park_id %>
     <br>
     <br>
     <%= f.submit "Submit" %>
