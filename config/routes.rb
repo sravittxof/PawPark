@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :playdates
   end
   resources :parks, only: [:index, :show, :edit, :update]
+  resources :parks do
+    resources :visits, only: [:new, :create]
+  end
   resources :dogs, only: [:index, :show]
   resources :users do
     resources :dogs, only: [:index, :new, :create]

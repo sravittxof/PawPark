@@ -6,6 +6,12 @@ class VisitsController < ApplicationController
     end
 
     def create
+        @visit = Visit.new(params)
+        if @visit.save
+        
+        else
+
+        end
 
     end
 
