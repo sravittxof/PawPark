@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   #resources :parks, only: [:index, :show, :edit, :update]
   resources :parks do
-    resources :visits, only: [:new, :create]
+    resources :visits, only: [:new, :create, :edit, :update]
   end
   resources :dogs, only: [:index, :show]
   resources :users do
