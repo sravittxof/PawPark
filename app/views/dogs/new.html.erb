@@ -1,0 +1,22 @@
+<h1>Create Your Dog</h1>
+
+<%= form_for(@dog) do |f| %>
+    <%= f.label :name%>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :age%>
+    <%= f.text_field :number_field %>
+    <br>
+    <br>
+    <%= f.label :breed%>
+    <%= f.text_field :breed %>
+    <br>
+    <br>
+    <%= f.label :size %>
+    <%= f.text_field :size %>
+    <br>
+    <br>
+
+    <%= f.submit "Submit" %>
+<% end%>
