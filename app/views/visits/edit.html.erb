@@ -1,8 +1,10 @@
 <h1> Check-out of Current Visit </h1>
 
+
+
 <%= form_for(@visit) do |f| %>
-    <%= f.label :active_visit, "Select Button to Check-Out of Park" %>
-    <%= f.collection_select :id, @visit.each { |v| v }, :id, :dog_id %>
+
+    <%= f.collection_select :dog_id, current_user.dogs.all, :id, :name %>
     <br>
     <br>
     <%= f.submit "Submit" %>
