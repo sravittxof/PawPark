@@ -2,9 +2,8 @@ class DogsController < ApplicationController
 
 
     def index
-        if params[:user_id] && params[:user_id] == current_user.id
-            @dogs = current_user.dogs.all
-            redirect_to user_dogs_path(current_user)
+        if params[:user_id] && params[:user_id] == current_user.id.to_s
+            @dogs = current_user.dogs
         else
             @dogs = Dog.all
         end
@@ -19,7 +18,6 @@ class DogsController < ApplicationController
     end
 
     def create
-        binding.pry
         @dog = Dog.new(dog_params)
         @dog.user = current_user
         if @dog.save
@@ -27,7 +25,6 @@ class DogsController < ApplicationController
         else
             render :new
         end
-        binding.pry
     end
 
     private
