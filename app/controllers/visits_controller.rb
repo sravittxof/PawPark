@@ -9,38 +9,59 @@ class VisitsController < ApplicationController
     end
 
     def new
-        @visit = Visit.new(park_id: params[:park_id])
+        park = Park.find(params[:park_id])
+        if park
+            @visit = Visit.new(park_id: params[:park_id])
+        else
+            redirect_to parks_path
+        end
     end
 
     def create
+        # @visit = Visit.new(visit_params)
+        # @visit.active_visit = true
+        # if @visit.save
+        #     redirect_to park_path(@visit.park)
+        # else
+        #     redirect_to parks_path            
+        # end
         binding.pry
         @visit = Visit.new(visit_params)
-        @visit.active_visit = true
-        binding.pry
-        if @visit.save
-            redirect_to park_path(@visit.park)
+        if Park.find(@visit.park) && @visit.dog.user_id == current_user.id
+            @visit.active_visit = true
+            if @visit.save
+                redirect_to park_path(@visit.park)
+            else
+                render :new
+            end
         else
-            redirect_to parks_path            
+            redirect_to parks_path
         end
     end
 
     def edit
         binding.pry
-        @visit = Visit.find_by(id: params[:id])
-        # current_user.dogs.each do |dog|
-        #     visit = dog.visits.last
-        #     if visit.active_visit
-        #         @visit << visit #if visit.active_visit
-        #     end
-        # end
-
+        #@visit = Visit.find_by(id: params[:id])
+        visit = Visit.find(params[:id])
+        if visit && visit.dog.user_id == current_user.id
+            @visit = visit
+        else
+            redirect_to parks_path
+        end
     end
 
     def update
         binding.pry
+        # @visit = Visit.find(params[:id])
+        # binding.pry
+        # if @visit.update(active_visit: false)
+        #     redirect_to parks_path
+        # else
+        #     render park_path(@visit.park)
+        # end
         @visit = Visit.find(params[:id])
-        binding.pry
-        if @visit.update(active_visit: false)
+        if @visit && @visit.dog.user_id == current_user.id
+            @visit.update(active_visit: false)
             redirect_to parks_path
         else
             render park_path(@visit.park)
