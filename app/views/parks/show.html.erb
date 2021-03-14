@@ -9,3 +9,11 @@
 <% else %>
     <h3><%= link_to "Check-in to Park", new_park_visit_path(@park)%></h3>
 <% end %>
+
+
+<%= "Current Visitors: #{@park.active_visits_count}" %>
+<br>
+<br>
+<% @park.active_visits.each do |v| %>
+    <%= link_to v.visiting_dog_name, dog_path(v.dog) %>
+<% end %>
