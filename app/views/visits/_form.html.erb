@@ -1,0 +1,4 @@
+    <%= f.collection_select :dog_id, current_user.dogs.all, :id, :name %>
+    <br>
+    <br>
+    <%= f.submit "Submit" %>
