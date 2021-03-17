@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    helper_method :current_user, :logged_in?, :current_visit, :my_current_visits, # :my_dogs,
+    helper_method :current_user, :logged_in?, :current_visit, :my_current_visits, :at_park?# :my_dogs,
 
     private
 
@@ -16,21 +16,29 @@ class ApplicationController < ActionController::Base
         redirect_to '/' if !logged_in?
     end
 
-    def current_visit
-        user_dog_visits = current_user.dogs.all.map { |dog| dog.visits.all.last.active_visit }
-        #@current_visit = Dog.find_by(dog.id).visits.last
-    end
-
-    # def visiting_dog_name
-    #     self.dog.name
+    # def current_visit
+    #     user_dog_visits = current_user.dogs.all.map { |dog| dog.visits.all.last.active_visit }
+    #     #@current_visit = Dog.find_by(dog.id).visits.last
     # end
+
 
     def my_current_visits
         @my_current_visits = Visit.active_visit.joins(dog: :user)
     end
 
+    def at_park?(park)
+        my_current_visits.any? { |v| v.park_id == park.id } 
+    end
+
+    def check_out_of(park)
+        if at_park?(park)
+
+        end
+    end
+
     # def my_dogs
     #     current_user.dogs
     # end
+
 
 end

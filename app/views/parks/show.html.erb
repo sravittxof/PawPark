@@ -2,7 +2,7 @@
 
 <br>
 
-<% if my_current_visits.any? %>
+<% if at_park?(@park) %>
     <% my_current_visits.each do |v| %>
     <h3><%= link_to "Check #{v.visiting_dog_name} of Park", edit_visit_path(v) %></h3>
     <% end %>
