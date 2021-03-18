@@ -8,5 +8,10 @@ module ParksHelper
         my_current_visits.find_all { |v| v.park_id == park.id }
     end
 
+    def check_out_of_park(park)
+        if at_park?(park)
+
+        end
+    end
 
 end
