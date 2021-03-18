@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    helper_method :current_user, :logged_in?, :current_visit, :my_current_visits, :at_park?# :my_dogs,
+    helper_method :current_user, :logged_in?, :current_visit, :my_current_visits, #:at_park?, :my_current_visits_at_this_park# :my_dogs,
 
     private
 
@@ -21,24 +21,14 @@ class ApplicationController < ActionController::Base
     #     #@current_visit = Dog.find_by(dog.id).visits.last
     # end
 
-
     def my_current_visits
         @my_current_visits = Visit.active_visit.joins(dog: :user)
     end
 
-    def at_park?(park)
-        my_current_visits.any? { |v| v.park_id == park.id } 
-    end
-
-    def check_out_of(park)
+    def check_out_of_park(park)
         if at_park?(park)
 
         end
     end
-
-    # def my_dogs
-    #     current_user.dogs
-    # end
-
 
 end
