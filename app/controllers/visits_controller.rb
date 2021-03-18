@@ -27,7 +27,7 @@ class VisitsController < ApplicationController
         # end
         binding.pry
         @visit = Visit.new(visit_params)
-        if Park.find(@visit.park) && @visit.dog.user_id == current_user.id
+        if Park.find(@visit.park.id) && @visit.dog.user_id == current_user.id
             @visit.active_visit = true
             if @visit.save
                 redirect_to park_path(@visit.park)
