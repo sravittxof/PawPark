@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     #skip_before_action :verify_authenticity_token, only: :create
-    #skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :omniauth]
+    skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :omniauth]
     
 
     def omniauth
