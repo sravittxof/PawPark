@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     private
 
     def current_user
-        @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+        @current_user ||= User.find_by_id(session[:user_id]) #if session[:user_id]
     end
 
     def logged_in?
@@ -18,12 +18,6 @@ class ApplicationController < ActionController::Base
 
     def my_current_visits
         @my_current_visits = Visit.active_visit.joins(dog: :user)
-    end
-
-    def check_out_of_park(park)
-        if at_park?(park)
-
-        end
     end
 
 end

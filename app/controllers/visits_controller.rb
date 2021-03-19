@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def index
     
@@ -51,7 +52,7 @@ class VisitsController < ApplicationController
     end
 
     def update
-        binding.pry
+
         # @visit = Visit.find(params[:id])
         # binding.pry
         # if @visit.update(active_visit: false)

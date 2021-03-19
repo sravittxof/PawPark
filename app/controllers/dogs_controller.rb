@@ -1,5 +1,5 @@
 class DogsController < ApplicationController
-
+    before_action :redirect_if_not_logged_in
 
     def index
         if params[:user_id] && params[:user_id] == current_user.id.to_s

@@ -1,5 +1,6 @@
 class ParksController < ApplicationController
-
+    before_action :redirect_if_not_logged_in
+    
     def index
         @parks = Park.all
     end
