@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     include ApplicationHelper
     before_action :redirect_if_not_logged_in
     
-    helper_method :current_user, :my_current_visits
+    helper_method :current_user, :my_current_visits, :my_dogs
 
     private
 
@@ -12,7 +12,12 @@ class ApplicationController < ActionController::Base
 
 
     def my_current_visits
-        @my_current_visits = Visit.active_visit.joins(dog: :user)
+        @my_current_visits = Visit.active_visit.joins(dog: :user).where(user: current_user)
+    end
+
+
+    def my_dogs
+        Dog.where(user: current_user)
     end
 
 end
