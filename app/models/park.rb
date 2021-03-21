@@ -11,4 +11,9 @@ class Park < ApplicationRecord
         active_visits.count
     end
 
+    def dogs_at_park
+        Dog.joins(:visits).where({visits: {active_visit: true, park: self}})
+    end
+
+
 end
