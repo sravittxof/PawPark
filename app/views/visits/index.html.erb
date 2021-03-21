@@ -1,0 +1,7 @@
+<h1>Visits Index</h1>
+
+<% @visits.each do |visit|%>
+    <%= link_to visit.dog.name, dog_path(visit.dog)%>
+    <br>
+<% end %>
+
