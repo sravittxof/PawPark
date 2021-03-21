@@ -11,5 +11,9 @@ class Visit < ApplicationRecord
     self.dog.name
   end
 
+  def self.active_park_visits(park)
+    where(active_visit: true, park: park)
+  end
+
 
 end
