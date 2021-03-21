@@ -24,6 +24,9 @@ module ParksHelper
     #     dogs = my_dogs
     # end
 
+    def user_dog_visits_at_park(park)
+        Visit.joins(dog: :user).where({visits: {active_visit: true, park: park}})
+    end
 
 
     def count_dogs_at_park(park)
