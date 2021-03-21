@@ -3,7 +3,11 @@ class VisitsController < ApplicationController
     include VisitsHelper
 
     def index
-    
+        if params[:park_id]
+            @visits = Visit.active_park_visits(params[:park_id])
+        else
+            @visits = Visit.all
+        end
     end
 
     def show
