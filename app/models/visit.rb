@@ -11,14 +11,5 @@ class Visit < ApplicationRecord
     self.dog.name
   end
 
-  # def dog_name=(name)
-  #   self.dog = 
-  # end
-
-  # def dog_name
-  #   self.name
-  # end
-
-
 
 end
