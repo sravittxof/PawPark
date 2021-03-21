@@ -21,11 +21,11 @@ class VisitsController < ApplicationController
             if @visit.save
                 redirect_to park_path(@visit.park)
             else
-                redirect_to parks_path            
+                render :new
             end
         else
             flash[:message] = "Dog cannot have two visits at same time."
-            redirect_to park_path(@visit.park)
+            render :new
         end
     end
 
