@@ -11,8 +11,8 @@ class Visit < ApplicationRecord
     self.dog.name
   end
 
-  def self.active_park_visits(park_id)
-    where(active_visit: true, park: park_id)
+  def self.active_visits_by_park(park_id)
+    self.active_visit.where(park: park_id)
   end
 
 
