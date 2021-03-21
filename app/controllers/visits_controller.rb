@@ -4,7 +4,7 @@ class VisitsController < ApplicationController
 
     def index
         if params[:park_id]
-            @visits = Visit.active_park_visits(params[:park_id])
+            @visits = Visit.active_visits_by_park(params[:park_id])
         else
             @visits = Visit.all
         end
