@@ -3,7 +3,7 @@
 
 
 <h3><%= link_to "Check-in to Park", new_park_visit_path(@park)%></h3>
-<% user_dog_visits_at_park(@park).each do |visit| %>
+<% active_visits_by_park_dog_user(@park).each do |visit| %>
     <h3><%= link_to "Check #{visit.dog.name} Out of Park", edit_visit_path(visit)%></h3>
 <% end %>
 
