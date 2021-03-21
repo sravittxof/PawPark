@@ -6,6 +6,16 @@ class Dog < ApplicationRecord
 
   validates :name, presence: true
   validates :age, numericality: true
+
   #scope :my_dogs, -> { where(user_id: current_user.id) }
+
+  # def my_dog?(user)
+  #   self.user == user
+  # end
+
+  def has_active_visit?
+    self.visits.active_visit.any?
+  end
+
 
 end
