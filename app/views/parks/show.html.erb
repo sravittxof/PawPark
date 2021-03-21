@@ -1,19 +1,17 @@
 <h1><%= @park.name %></h1>
 
-<br>
-
-<% if at_park?(@park) %>
-    <% my_current_visits.each do |v| %>
-    <h3><%= link_to "Check #{v.visiting_dog_name} of Park", edit_visit_path(v) %></h3>
-    <% end %>
-<% else %>
-    <h3><%= link_to "Check-in to Park", new_park_visit_path(@park)%></h3>
-<% end %>
 
 
-<%= "Current Visitors: #{@park.active_visits_count}" %>
+<h3><%= link_to "Check-in to Park", new_park_visit_path(@park)%></h3>
+
+
 <br>
 <br>
-<% @park.active_visits.each do |v| %>
-    <%= link_to v.visiting_dog_name, dog_path(v.dog) %>
+<%= "Current Visitors: #{count_dogs_at_park(@park)}" %>
+<br>
+<br>
+
+<% @park.dogs_at_park.each do |dog| %>
+    <%= link_to dog.name, dog_path(dog)%>
+    <br>
 <% end %>
