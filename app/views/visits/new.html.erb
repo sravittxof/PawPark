@@ -1,5 +1,7 @@
 <h1>Check-In to Park</h1>
 
+<%= flash[:message] if flash[:message]%>
+
 <%= form_for(@visit) do |f| %>
     <%= f.hidden_field :park_id, value: @visit.park_id %>
     <%= render partial: 'form', locals: { f: f } %>    
