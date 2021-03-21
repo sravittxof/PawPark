@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     end
 
 
+    def my_dog?(dog)
+        dog.user == current_user
+    end
+
     def my_dogs
         Dog.where(user: current_user)
     end
