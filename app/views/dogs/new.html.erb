@@ -1,22 +1,9 @@
 <h1>Create Your Dog</h1>
 
-<%= form_for(@dog) do |f| %>
-    <%= f.label :name%>
-    <%= f.text_field :name %>
-    <br>
-    <br>
-    <%= f.label :age %>
-    <%= f.number_field :age %>
-    <br>
-    <br>
-    <%= f.label :breed %>
-    <%= f.text_field :breed %>
-    <br>
-    <br>
-    <%= f.label :size %>
-    <%= f.text_field :size %>
-    <br>
-    <br>
+<%= flash[:message] if flash[:message]%>
 
-    <%= f.submit "Submit" %>
+<%= form_for(@dog) do |f| %>
+
+    <%= render partial: 'form', locals: { f: f } %>    
+
 <% end%>
