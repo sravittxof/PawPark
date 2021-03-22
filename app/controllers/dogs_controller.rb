@@ -27,6 +27,20 @@ class DogsController < ApplicationController
         end
     end
 
+    def edit
+
+    end
+
+    def update
+        @dog = Dog.find(params[:id])
+        if edit_dog_allowed?(@dog) && @dog.update(dog_params)
+            redirect_to dog_path(@dog)
+        else
+            flash[:message] = "That's not your dog!"
+            render :edit
+        end
+    end
+
     private
 
     def dog_params
