@@ -15,5 +15,4 @@ class Park < ApplicationRecord
         Dog.joins(:visits).where({visits: {active_visit: true, park: self}})
     end
 
-
 end
