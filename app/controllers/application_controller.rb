@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     private
 
     def current_user
-        @current_user ||= User.find_by_id(session[:user_id]) #if session[:user_id]
+        @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
     end
 
 
@@ -15,13 +15,5 @@ class ApplicationController < ActionController::Base
         @my_current_visits = Visit.active_visit.joins(dog: :user).where(user: current_user)
     end
 
-
-    def my_dog?(dog)
-        dog.user == current_user
-    end
-
-    def my_dogs
-        Dog.where(user: current_user)
-    end
 
 end
