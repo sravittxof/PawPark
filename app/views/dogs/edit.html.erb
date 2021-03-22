@@ -1,0 +1,9 @@
+<h1>Edit Your Dog</h1>
+
+<%= flash[:message] if flash[:message]%>
+
+<%= form_for(@dog) do |f| %>
+
+    <%= render partial: 'form', locals: { f: f } %>    
+
+<% end%>
