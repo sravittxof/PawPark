@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #custom routes above generator provided routes
   
   resources :parks do
-    resources :visits, only: [:show, :new]
+    resources :visits, only: [:index, :new, :create]
   end
   resources :users
   resources :dogs
