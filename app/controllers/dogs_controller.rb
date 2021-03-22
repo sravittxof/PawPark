@@ -2,11 +2,7 @@ class DogsController < ApplicationController
 include DogsHelper
 
     def index
-        if params[:user_id] && params[:user_id] == current_user.id.to_s
-            @dogs = current_user.dogs
-        else
-            @dogs = Dog.all
-        end
+        @dogs = Dog.all
     end
 
     def show
