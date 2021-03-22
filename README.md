@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PawPark lets users see dog parks in their area, check their dogs into parks so that other users can see where all the dogs are at. Upcoming features include playdate functionaltiy.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
