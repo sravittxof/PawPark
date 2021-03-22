@@ -1,5 +1,5 @@
 class DogsController < ApplicationController
-
+include DogsHelper
 
     def index
         if params[:user_id] && params[:user_id] == current_user.id.to_s
@@ -28,7 +28,7 @@ class DogsController < ApplicationController
     end
 
     def edit
-
+        @dog = Dog.find(params[:id])
     end
 
     def update
