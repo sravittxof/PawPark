@@ -14,6 +14,7 @@ include DogsHelper
     end
 
     def create
+        binding.pry
         @dog = Dog.new(dog_params)
         @dog.user = current_user
         if @dog.save
@@ -35,6 +36,14 @@ include DogsHelper
             flash[:message] = "That's not your dog!"
             render :edit
         end
+    end
+
+    def destroy
+        @dog = Dog.find(params[:id])
+        if edit_dog_allowed?(@dog)
+            @dog.destroy
+        end
+        redirect_to dogs_path
     end
 
     private
