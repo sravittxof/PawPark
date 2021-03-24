@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
+  get '/parks/most_visits' => 'parks#most_visits'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   #custom routes above generator provided routes
